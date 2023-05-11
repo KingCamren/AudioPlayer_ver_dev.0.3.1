@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AudioPlayer_ver_dev.0.3</string>
+    <string name="audio_service_notif_title">AudioPlayer</string>
+    <string name="audio_service_notif_text">audio is playing</string>
+    <string name="audio_service_notif_ticker">AudioPlayer began playing audio</string>
+    <string name="media_url_mp3">https://storage.googleapis.com/exoplayer-test-media-0/Jazz_In_Paris.mp3</string>
+    <string name="button_play_content_description">play/pause button graphic</string>
+    <string name="thumbnail_content_description">audio file thumbnail</string>
+    <string name="button_skip_previous_content_description">skip previous button graphic</string>
+    <string name="notification_channel_name">Audio Player Controller</string>
+    <string name="notification_channel_description">Notification displayed when app is running, allowing control over audio player from the notification.</string>
+</resources>

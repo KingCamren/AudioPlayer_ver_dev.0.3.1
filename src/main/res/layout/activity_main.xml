@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark_blue_purple"
+    android:id="@+id/layout"
+    tools:context=".MainActivity">
+
+    <!--    top guideline for button panel in audio mode -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/audio_mode_button_panel_top"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".8"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/audio_mode_progress_bar_top"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".7"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <view class="com.example.audioplayer_ver_dev031.DrawView"
+        android:id="@+id/audio_mode_progress_bar"
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_progress_bar_top"
+        app:layout_constraintBottom_toBottomOf="@id/audio_mode_button_panel_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <!--    bottom guideline for metadata panel in audio mode -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/audio_mode_metadata_panel_bottom"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent=".2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!--    view for current track's thumbnail in audio mode -->
+    <ImageView
+        android:id="@+id/audio_mode_thumbnail"
+        android:contentDescription="@string/thumbnail_content_description"
+        android:visibility="visible"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/audio_mode_button_panel_top"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_metadata_panel_bottom" />
+
+    <!--    play/pause button background -->
+    <View
+        android:background="@color/grey_half_alpha"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/button_play_graphic"
+        app:layout_constraintLeft_toLeftOf="@id/button_play_graphic"
+        app:layout_constraintRight_toRightOf="@id/button_play_graphic"
+        app:layout_constraintTop_toTopOf="@id/button_play_graphic"
+        android:onClick="playPause"/>
+
+    <!--   play button -->
+    <ImageView
+        android:id="@+id/button_play_graphic"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+        android:contentDescription="@string/button_play_content_description"
+        android:visibility="invisible"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_button_panel_top" />
+
+    <!--   pause button -->
+    <ImageView
+        android:id="@+id/button_pause_graphic"
+        app:srcCompat="@drawable/ic_baseline_pause_24"
+        android:contentDescription="@string/button_play_content_description"
+        android:visibility="visible"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_button_panel_top" />
+
+    <!--    skip prev button background -->
+    <View
+        android:background="@color/grey_half_alpha"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/button_skip_previous_graphic"
+        app:layout_constraintLeft_toLeftOf="@id/button_skip_previous_graphic"
+        app:layout_constraintRight_toRightOf="@id/button_skip_previous_graphic"
+        app:layout_constraintTop_toTopOf="@id/button_skip_previous_graphic"
+        android:onClick="previousInPlaylist"/>
+
+    <!--    skip prev button -->
+    <ImageView
+        android:id="@+id/button_skip_previous_graphic"
+        android:contentDescription="@string/button_skip_previous_content_description"
+        android:src="@drawable/ic_baseline_skip_previous_24"
+        android:visibility="visible"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/button_play_graphic"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_button_panel_top" />
+
+    <!--    skip next button background -->
+    <View
+        android:background="@color/grey_half_alpha"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/button_skip_next_graphic"
+        app:layout_constraintLeft_toLeftOf="@id/button_skip_next_graphic"
+        app:layout_constraintRight_toRightOf="@id/button_skip_next_graphic"
+        app:layout_constraintTop_toTopOf="@id/button_skip_next_graphic"
+        android:onClick="nextInPlaylist"/>
+
+    <!--    skip next button -->
+    <ImageView
+        android:id="@+id/button_skip_next_graphic"
+        android:contentDescription="@string/button_skip_previous_content_description"
+        android:src="@drawable/ic_baseline_skip_next_24"
+        android:visibility="visible"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/button_play_graphic"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/audio_mode_button_panel_top"/>
+
+    <TextView
+        android:id="@+id/text_metadata_panel"
+        android:visibility="visible"
+
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/audio_mode_metadata_panel_bottom"/>
+
+    <!--    view for exoplayer in video mode -->
+    <androidx.media3.ui.PlayerView
+        android:id="@+id/video_view"
+        android:visibility="gone"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
