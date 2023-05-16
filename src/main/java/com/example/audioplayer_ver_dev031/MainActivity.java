@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements IBinder.DeathReci
             exoPlayer = audioPlayerService.getExoPlayer();
             playerView = findViewById(R.id.video_view);
             playerView.setPlayer(exoPlayer);
+
             Log.d(TAG, "service connected");
         }
 
@@ -76,8 +77,7 @@ public class MainActivity extends AppCompatActivity implements IBinder.DeathReci
 
     // progress bar
     DrawView drawView;
-    Handler mainThreadHandler = HandlerCompat.createAsync(Looper.getMainLooper()); // used to access main thread for async tasks
-    boolean isInForeground; // used to stop progress bar updates when app is in background
+
     // =============
     // END OF FIELDS
     // =============
@@ -129,29 +129,16 @@ public class MainActivity extends AppCompatActivity implements IBinder.DeathReci
     @Override
     protected void onStart() {
         super.onStart();
-        isInForeground = true;
         // bind to AudioPlayerService.java
         bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
         Log.d(TAG, "service bound");
         hideSystemUI();
-
-        mainThreadHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                while(isInForeground) {
-                    drawView.setPlaybackPosition(exoPlayer.getCurrentPosition());
-                    drawView.setContentDuration(exoPlayer.getDuration());
-                    Log.d(TAG, "content position: " + exoPlayer.getCurrentPosition() + " / " + exoPlayer.getDuration());
-                }
-            }
-        });
     }
 
     // unbind UI from AudioPlayerService
     @Override
     protected void onStop() {
         super.onStop();
-        isInForeground = false;
         unbindService(serviceConnection);
         Log.d(TAG, "service unbound");
     }

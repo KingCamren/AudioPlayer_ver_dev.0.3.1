@@ -23,7 +23,8 @@ public class DrawView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         paint.setColor(Color.argb(255, 0, 160, 160));
-        canvas.drawRect(0F, 0F, getWidth() * ((float)playbackPosition / (float)contentDuration), getHeight(), paint);
+        // canvas.drawRect(0F, 0F, getWidth() * ((float)playbackPosition / (float)contentDuration), getHeight(), paint);
+        canvas.drawRect(0F, 0F, getWidth(), getHeight(), paint);
         invalidate();
     }
 
